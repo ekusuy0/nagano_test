@@ -1,4 +1,9 @@
+# == Route Map
+#
+
 Rails.application.routes.draw do
+
+  root to: "public/homes#top"
 
   #顧客用
   #URL /customers/sign_in ...
@@ -7,14 +12,13 @@ Rails.application.routes.draw do
     registrations: 'public/registrations'
   }
 
-  root to: "public/homes#top"
-
   namespace :public do
     resources :customers, only: [:show, :edit, :upadate]
+    resources :items, only: [:index, :show]
     #退会確認画面
-    get 'public/customers/:id/out_check' => 'customers#out_check', as: 'out_check'
+    get 'customers/:id/out_check' => 'customers#out_check', as: 'out_check'
     #論理削除用のルーティング
-    patch '/customers/:id' => 'customers#out', as: 'out'
+    patch 'customers/:id' => 'customers#out', as: 'out'
   end
 
 
@@ -25,5 +29,9 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
+
+  namespace :admin do
+    resources :items, except: [:destroy]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
