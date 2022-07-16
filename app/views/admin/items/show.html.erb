@@ -1,0 +1,11 @@
+<h1>商品詳細</h1>
+
+<%= image_tag @item.get_item_image, size: "100x100" %>
+<p><%= @item.name %></p>
+<p><%= @item.price %>円</p>
+<% if @item.sale_status == true %>
+  <p>販売中</p>
+<% else %>
+  <p>販売停止中</p>
+<% end %>
+

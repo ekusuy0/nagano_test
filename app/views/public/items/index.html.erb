@@ -1,0 +1,8 @@
+<% @items.each do |item| %>
+  <%= link_to public_item_path(item.id) do %>
+    <%= image_tag item.get_item_image, size: "200x200" %>
+  <% end %>
+  <p><%= item.name %></p>
+  <p><%= item.description %></p>
+  <p><%= item.price %>円</p>
+<% end %>
