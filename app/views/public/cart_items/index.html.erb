@@ -47,3 +47,6 @@
     <td><%= @total.to_s(:delimited) %></td>
   </tr>
 </table>
+<% if current_customer.cart_items.present? %>
+  <%= link_to "情報入力へ進む", new_public_order_path %>
+<% end %>

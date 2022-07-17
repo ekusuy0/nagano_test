@@ -3,6 +3,11 @@
 
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'orders/new'
+    get 'orders/index'
+    get 'orders/show'
+  end
   root to: "public/homes#top"
 
   #顧客用
@@ -15,11 +20,14 @@ Rails.application.routes.draw do
   namespace :public do
     resources :customers, only: [:show, :edit, :upadate]
     resources :items, only: [:index, :show]
+    resources :orders, only: [:new, :index, :show, :create]
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       collection do
         delete 'destroy_all'
       end
     end
+    post 'orders/confirm' => 'orders#confirm', as: 'confirm'
+    get 'orders/conplete' => 'orders#conplete', as: 'conplete'
     #退会確認画面
     get 'customers/:id/out_check' => 'customers#out_check', as: 'out_check'
     #論理削除用のルーティング
