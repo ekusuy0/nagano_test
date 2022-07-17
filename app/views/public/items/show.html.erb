@@ -3,5 +3,9 @@
 <p><%= @item.name %></p>
 <p>説明</p>
 <p><%= @item.description %></p>
-<p><%= @item.tax(@item.price) %></p>
-<%= form_with model
+<p><%= @item.tax %></p>
+<%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
+  <%= f.select :quantity, *[1..10] %>
+  <%= f.hidden_field :item_id, :value => @item.id %>
+  <%= f.submit 'カートに入れる' %>
+<% end %>

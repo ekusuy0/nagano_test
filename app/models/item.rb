@@ -13,7 +13,7 @@
 #
 class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
-  
+
   has_one_attached :item_image
 
 
@@ -25,7 +25,7 @@ class Item < ApplicationRecord
     end
   end
 
-  def tax(price)
-    @tax = (price * 1.1).floor
+  def tax
+    (price * 1.1).floor
   end
 end

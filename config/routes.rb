@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   namespace :public do
     resources :customers, only: [:show, :edit, :upadate]
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :create, :destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
     #退会確認画面
     get 'customers/:id/out_check' => 'customers#out_check', as: 'out_check'
     #論理削除用のルーティング
