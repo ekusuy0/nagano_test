@@ -60,4 +60,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'annotate'
 gem 'devise'
 gem 'enum_help'
+gem 'pry-byebug', group: :development
 

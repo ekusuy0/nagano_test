@@ -3,11 +3,6 @@
 
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
-  end
   root to: "public/homes#top"
 
   #顧客用
