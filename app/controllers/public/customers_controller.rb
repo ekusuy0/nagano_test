@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(current_customer.id)
   end
 
   def edit
@@ -14,7 +14,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def out
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(current_customer.id)
     @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
