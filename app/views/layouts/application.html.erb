@@ -20,6 +20,7 @@
         <li><%= link_to "カートへ", public_cart_items_path %></li>
         <li><%= link_to "商品一覧", public_items_path %></li>
         <li><%= link_to "注文履歴一覧", public_orders_path %></li>
+        <li><%= link_to "管理者のtop", admin_path %></li>
       <% else %>
         <li><%= link_to "新規登録", new_customer_registration_path %></li>
         <li><%= link_to "ログイン", new_customer_session_path %></li>

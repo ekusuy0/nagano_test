@@ -41,8 +41,10 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions'
   }
 
+  get 'admin' => 'admin/homes#top'
   namespace :admin do
     resources :items, except: [:destroy]
+    resources :orders, only: [:show, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
