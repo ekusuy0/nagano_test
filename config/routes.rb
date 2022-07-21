@@ -3,6 +3,9 @@
 
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :ordered_items, only: [:update]
+  end
   root to: "public/homes#top"
 
   #顧客用
